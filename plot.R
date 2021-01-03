@@ -10,10 +10,10 @@ adventures <- readRDS(file.path("data", "adventures.rds"))
 adventures %>%
   ggplot(aes(out, duration)) +
   geom_point(size=1) +
-  geom_smooth(method="gam", formula= y ~ s(x, bs = "cs"), method.args= list(family=Gamma())) +
+  geom_smooth(method="gam", formula= y ~ s(x, bs="cs"), method.args= list(family=Gamma())) +
   labs(
     x = "Date",
-    y = "Duration of Adventure",
+    y = "Duration of Adventure (Minutes)",
     title = "Durations of @PepitoTheCat's Adventures",
     caption = "\ngam(duration ~ s(datetime, bs=\"cs\"), family=Gamma())"
   )
@@ -30,7 +30,7 @@ adventures %>%
   right_join(tibble(day = range_days), by="day") %>%
   ggplot(aes(day, n)) +
   geom_col() +
-  geom_smooth(alpha=0.75, method="gam", formula= y ~ s(x, bs = "cs"), method.args= list(family=poisson())) +
+  geom_smooth(alpha=0.8, method="gam", formula= y ~ s(x, bs = "cs"), method.args= list(family=poisson())) +
   labs(
     x = "Date",
     y = "Adventures per Day",
