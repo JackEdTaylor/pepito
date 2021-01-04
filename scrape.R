@@ -1,6 +1,7 @@
 library(rtweet)
 library(dplyr)
 library(tidyr)
+library(readr)
 library(lubridate)
 
 tweets <- get_timeline("PepitoTheCat", n=Inf) %>%
@@ -30,3 +31,4 @@ adventures <- actions %>%
 saveRDS(tweets, file.path("data", "tweets.rds"))
 saveRDS(actions, file.path("data", "actions.rds"))
 saveRDS(adventures, file.path("data", "adventures.rds"))
+write_csv(adventures, file.path("data", "adventures.csv"))
